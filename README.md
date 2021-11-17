@@ -51,3 +51,6 @@ Open the file `midi-lights.vrt6` in the Android app and change the IP address to
     1) stop the auto-changing patterns on one that you like  
     2) manually switch through patterns
     3) manually choose a solid color 
+
+- Code can be updated wirelessly using ArduinoOTA and mDNS address (http://midi-lights.local instead of an IP address).  
+  mDNS requires [Bonjour Print Services](https://download.info.apple.com/Mac_OS_X/061-8098.20100603.gthyu/BonjourPSSetup.exe) (also known as zeroconf) on to be installed on Windows
