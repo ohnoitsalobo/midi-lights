@@ -47,6 +47,8 @@ Open the file `midi-lights.vrt6` in the Android app and change the IP address to
 
 - If the sustain pedal is used, it triggers a 'firework' effect on the LED strip.
 
+- BPM information can be calculated from MIDI data, to make time-responsive LED patterns.
+
 - Using the Virtuino app allows you to  
     1) stop the auto-changing patterns on one that you like  
     2) manually switch through patterns
