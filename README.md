@@ -25,7 +25,7 @@ Install all required libraries.
 
 Change WiFi network details in `header.h`
 
-(In order to receive hardware MIDI, use the ESP8266 RX pin `GPIO3` with the schematic linked above)
+(In order to receive hardware MIDI, use the ESP8266 RX pin `GPIO3` with the schematic linked above - or change the initialization in `header.h` to reflect whatever pin you're using)
 
 Change LED output pin and NUM_LEDS in `header.h` (and other LED strip details if you're not using WS2812B)
 
@@ -46,3 +46,4 @@ Open the file `midi-lights.vrt6` in the Android app and change the IP address to
 - If MIDI is detected, the LED strip lights up in approximate relation to the keys that were pressed.
 
 - If the sustain pedal is used, it triggers a 'firework' effect on the LED strip.
+
