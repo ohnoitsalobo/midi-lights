@@ -37,7 +37,11 @@ void runLeds(){
             EVERY_N_MILLISECONDS( 1000 / 60 ){  // Call the current pattern function once, updating the 'leds' array
                 gPatterns[gCurrentPatternNumber]();
             }
-            EVERY_N_SECONDS( 60 ) { if(auto_advance) nextPattern(); }   // change patterns periodically
+            if(auto_advance) {
+                EVERY_N_SECONDS( 40 ) { 
+                    nextPattern(); 
+                }
+            }   // change patterns periodically
         break;
         case _manual:
             adjustColors();
@@ -139,7 +143,6 @@ void fire(){ // my own simpler 'fire' code - randomly generate fire and move it 
         if(RIGHT[i].g > 0) RIGHT[i].g--;        // and reduce green in particular to fade the yellow faster than the red
         int j = NUM_LEDS/2-1-i;
         LEFT [j] = RIGHT[i];
-
     }
         yield();
 }

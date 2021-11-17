@@ -26,7 +26,7 @@ void setupVirtuino(){
 // The 'valueAsText' is the value that has sent from the app 
 void onReceived(char variableType, uint8_t variableIndex, String valueAsText){
     if (variableType=='V'){
-        float value = valueAsText.toFloat();        // convert the value to float. The valueAsText have to be numerical
+        float value = valueAsText.toInt();        // convert the value to float. The valueAsText have to be numerical
         if (variableIndex<V_memory_count) V[variableIndex]=value;              // copy the received value to arduino V memory array
 
         if (variableIndex < 3){
@@ -53,7 +53,7 @@ void onReceived(char variableType, uint8_t variableIndex, String valueAsText){
             previousPattern();
             V[variableIndex] = 0;
         }
-        else if(variableIndex > 5){
+        else if(variableIndex > 5 && variableIndex < 11){
             int x = (int)V[variableIndex];
             x = (x*x)/255.0;
             if      (variableIndex == 6 ){ // red
@@ -73,7 +73,8 @@ void onReceived(char variableType, uint8_t variableIndex, String valueAsText){
             manualColor_RIGHT = manualColor;
         }
         else if(variableIndex == 11){ // auto advance
-            auto_advance = (int)V[variableIndex];
+            auto_advance = !auto_advance;
+            V[variableIndex] = auto_advance;
         }
         V_prev[variableIndex] = V[variableIndex];
     }

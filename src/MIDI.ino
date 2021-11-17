@@ -134,7 +134,7 @@ void handleControlChange(byte channel, byte number, byte value){
         if( value >= 64 ){
             launchFirework = millis();
             for (int i = 0; i < sparks; i++){
-                _firework[i].init(NUM_LEDS/2);
+                _firework[i].init(random16(NUM_LEDS/3, 2*NUM_LEDS/3));
             }
             sustain = true;
         } else {

@@ -1,6 +1,6 @@
 #define wifissid "SSID"
-#define wifipassword "PASSWORD"
-#define host_name "midi-leds"
+#define wifipassword "password"
+#define host_name "midi-lights"
 
 #include <ESP8266WiFi.h>               // 
 #include <ESP8266mDNS.h>               // 
@@ -20,7 +20,7 @@ String hostname = host_name;          // device name on mDNS and wireless MIDI
 
 #define LED_TYPE    WS2812B    // LED strip type
 #define COLOR_ORDER GRB        // order of color in data stream
-#define LED_PINS    13         // data output pin
+#define LED_PINS    2          // data output pin
 #define NUM_LEDS    56         // number of LEDs in strip
 #define BRIGHTNESS  255
 // scale the brightness non-linearly which looks better because our eyes detect light intensity logarithmically
@@ -33,7 +33,7 @@ uint8_t gHue = 0, gHue1 = 0, gHue2 = 0; // rotating "base color" used by many of
 CRGB manualColor = 0x000000, manualColor_LEFT = 0x000000, manualColor_RIGHT = 0x000000;
 CHSV manualHSV (0, 255, 255);
 uint8_t currentBrightness = BRIGHTNESS, _setBrightness = BRIGHTNESS;
-bool auto_advance = true;
+uint8_t auto_advance = 1;
 #include "fireworks.h"
 
 enum mode_select {   // self-explanatory
@@ -75,8 +75,8 @@ uint32_t timeSinceLastMIDI = 0; // amount of time since the last MIDI input was 
 #include <VirtuinoCM.h>
 VirtuinoCM virtuino;               
 #define V_memory_count 32          // the size of V memory. You can change it to a number <=255)
-float V[V_memory_count];           // This array is synchronized with Virtuino V memory. You can change the type to int, long etc.
-float V_prev[V_memory_count];
+int V[V_memory_count];           // This array is synchronized with Virtuino V memory. You can change the type to int, long etc.
+int V_prev[V_memory_count];
 // #define debug 1
 WiFiServer virtuinoServer(8000);                   // Default Virtuino Server port 
 
