@@ -43,7 +43,11 @@ Open the file `midi-lights.vrt6` in the Android app and change the IP address to
 
 - LED patterns will change every 60 seconds
 
-- If MIDI is detected, the LED strip lights up in approximate relation to the keys that were pressed.
+- If MIDI is detected, the LED strip lights up in approximate relation to the keys that were pressed. If no MIDI is detected for 10 seconds, the mode changes back to automatic patterns.
 
 - If the sustain pedal is used, it triggers a 'firework' effect on the LED strip.
 
+- Using the Virtuino app allows you to  
+    1) stop the auto-changing patterns on one that you like  
+    2) manually switch through patterns
+    3) manually choose a solid color 
