@@ -35,7 +35,7 @@ The 61-key keyboard I have tested this on uses MIDI notes 36-96 for the full ran
 Upload to your device and it should work. On Apple devices it may be automatically detected as a network MIDI device. On Windows you will need to install [rtpMidi](http://www.tobias-erichsen.de/software/rtpmidi.html).
 
 Download the Virtuino Android app [here](https://play.google.com/store/apps/details?id=com.virtuino_automations.virtuino) for wireless control.  
-Open the file `src/midi-lights.vrt6` in the Android app and change the IP address to whatever your ESP8266 or ESP32 IP address is.
+Open the file `midi-lights.vrt6` in the Android app and change the IP address to whatever your ESP8266 or ESP32 IP address is.
 
 # Functions
 
