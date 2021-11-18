@@ -45,7 +45,7 @@ Open the file `midi-lights.vrt6` in the Android app and change the IP address to
 
 # Functions
 
-- Device starts up in 'automatic LED patterns' mode, but is listening for input from the MIDI port (either wired MIDI or network)
+- Device starts up in 'automatic LED patterns' mode, but is listening for input from the MIDI port (either wired MIDI or network). If wired AND network MIDI is active, the controller only receives from the wired MIDI and mirrors it on the network (to avoid getting confused).
 
 - LED patterns will change every 60 seconds
 
