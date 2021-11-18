@@ -1,5 +1,5 @@
-#define wireless_MIDI 1
-#define wired_MIDI 0
+#define wireless_MIDI 1    // If BOTH are enabled, wireless input is disabled as hardware MIDI is more reliable. However, received notes will be mirrored on the network conection.
+#define wired_MIDI 0       // 
 
 uint32_t launchFirework = 0;
 void checkMIDI(){
