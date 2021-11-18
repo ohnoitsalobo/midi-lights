@@ -5,8 +5,8 @@ uint32_t launchFirework = 0;
 void checkMIDI(){
     if((_mode == _midi) && (millis() - timeSinceLastMIDI > 10000)){     // if no MIDI detected for 10 seconds
         _mode = _auto;                                                  //     switch to auto mode
-        _setBrightness = 200*200/255.0;                                  //
-    }else if((_mode != _midi) && (MIDI_W.read())){                                            // if MIDI detected
+        _setBrightness = 200*200/255.0;                                 //
+    }else if((_mode != _midi) && (MIDI_W.read())){                      // if MIDI detected
         _mode = _midi;                                                  //     switch to MIDI mode
         FastLED.clear();
         _setBrightness = 255;
