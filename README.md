@@ -23,6 +23,8 @@ Caveats for wireless MIDI: there is noticeable latency and a strong possibility 
 
 Install all required libraries.
 
+Change board definitions in `platformio.ini` to reflect your board configuration.
+
 Change WiFi network details in `header.h`
 
 (In order to receive hardware MIDI, use the ESP8266 RX pin `GPIO3` with the schematic linked above - or change the initialization in `header.h` to reflect whatever pin you're using)
@@ -32,7 +34,11 @@ Change LED output pin and NUM_LEDS in `header.h` (and other LED strip details if
 Change some of the MIDI note details in `MIDI.h` if you are using a larger or a smaller keyboard, or sending a larger range of MIDI over the network.  
 The 61-key keyboard I have tested this on uses MIDI notes 36-96 for the full range. If the notes are transposed above or below that range, the LED strip adjusts to include them.
 
-Upload to your device and it should work. On Apple devices it may be automatically detected as a network MIDI device. On Windows you will need to install [rtpMidi](http://www.tobias-erichsen.de/software/rtpmidi.html).
+Upload to your device and it should work.  
+
+If network MIDI is enabled: 
+- On Apple devices it may be automatically detected as a network MIDI device.  
+- On Windows you will need to install [rtpMidi](http://www.tobias-erichsen.de/software/rtpmidi.html).
 
 Download the Virtuino Android app [here](https://play.google.com/store/apps/details?id=com.virtuino_automations.virtuino) for wireless control.  
 Open the file `midi-lights.vrt6` in the Android app and change the IP address to whatever your ESP8266 or ESP32 IP address is.
