@@ -55,8 +55,8 @@ void runMIDI(){
     MIDI.read();
 #endif
 
-#if wireless_MIDI
-#if !wired_MIDI
+#if wireless_MIDI    // if wired MIDI is enabled, ignores all network input to avoid confusion, but can still send network MIDI
+#if !wired_MIDI      // 
     MIDI_W.read();
 #endif
 #endif
@@ -66,7 +66,7 @@ void runMIDI(){
 
 const int sparks = 20;
 FireWork _firework[sparks];
-const uint8_t min_min = 0, max_min = 36, min_max = 96, max_max = 127;
+const uint8_t min_min = 0, max_min = 36, min_max = 96, max_max = 127; // Edit max_min and min_max to reflect the range of notes you will be most commonly using
 uint8_t _min = max_min, _max = min_max;
 
 void displayMIDI(){
@@ -76,7 +76,7 @@ void displayMIDI(){
 
     if(_lastPressed < _min) { _min = _lastPressed; }    // adjust note range in case octaves are changed
     if(_lastPressed > _max) { _max = _lastPressed; }    // 
-                                                        // 
+    
     float factor = 1.0f * (NUM_LEDS-1)/(_max-_min);     // 
     for (int i = 0; i < 127; i++){
         float _pos = factor*(_lastPressed-_min);
@@ -84,10 +84,10 @@ void displayMIDI(){
         midiNotes[_lastPressed] = 0;
     }
     EVERY_N_MILLISECONDS(1000/5){
-        if (_min < max_min) _min++;
-        if (_max > min_max) _max--;
+        if (_min < max_min) _min++;     // slowly shrink the range back to the 'normal' range
+        if (_max > min_max) _max--;     // 
     }
-    if(millis() - launchFirework < 1000){
+    if(millis() - launchFirework < 1000){   // if pedal is detected, display firework for one second
         fadeToBlackBy(leds, NUM_LEDS, 80);
         for (int i = 0; i < sparks; i++){
             _firework[i].draw();
@@ -143,9 +143,9 @@ void handleControlChange(byte channel, byte number, byte value){
     }
 }
 
-void handleClock() {
+void handleClock() {  // BPM information can be detected here. For this to work, the MIDI device must be configured to send tempo information.
     
-    if(ticks < 24){
+    if(ticks < 24){                  // there are 24 MIDI ticks per quarter note
         if(ticks == 0){
             lastClock = millis();
         }
